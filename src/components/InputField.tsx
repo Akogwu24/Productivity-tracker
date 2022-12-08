@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Todo } from '../models/todo';
 import { errorToast } from './common/notificationHandler';
 import dayjs from 'dayjs';
@@ -25,7 +25,7 @@ export const InputField = ({ todos, setTodos }: inpuFieldProps) => {
       <div>
         <input
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
           autoFocus
           className='input__box'
           placeholder='Enter a milestone to be conquered'
@@ -38,7 +38,7 @@ export const InputField = ({ todos, setTodos }: inpuFieldProps) => {
         value={date}
         min={dayjs(today).format('YYYY-MM-DDTHH:mm')}
         placeholder={'22/22/22'}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setDate(e.target.value)}
         className='date__box w-full md:w-80'
         type='datetime-local'
       />
