@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { BsCheck2All } from 'react-icons/bs';
 import { FiEdit3 } from 'react-icons/fi';
 import { HiOutlineTrash } from 'react-icons/hi';
@@ -40,7 +40,7 @@ export const SingleTodo = ({ todo, todos, setTodos }: singleTodoProps) => {
   return (
     <form
       className='h-28 bg-gradient-to-r from-cyan-700 to-blue-500 my-5 w-full drop-shadow text-gray-200 p-2'
-      onSubmit={(e) => handleSubmit(e, todo)}
+      onSubmit={(e: FormEvent<HTMLFormElement>) => handleSubmit(e, todo)}
     >
       {edit ? (
         <div className='flex gap-2 items-center'>
@@ -48,7 +48,7 @@ export const SingleTodo = ({ todo, todos, setTodos }: singleTodoProps) => {
           <input
             type='datetime-local'
             defaultValue={todo.date}
-            onChange={(e) => setNewDate(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setNewDate(e.target.value)}
             className='h-7 rounded w-full my-2 px-1 text-gray-600'
           />
           <input className='w-28 h-7 rounded bg-gray-700 color-white' type='submit' value='Add' />
@@ -78,3 +78,6 @@ export const SingleTodo = ({ todo, todos, setTodos }: singleTodoProps) => {
     </form>
   );
 };
+
+// onClick={(e: React.MouseEvent) => {
+//   const el = e.target as HTMLElement;
