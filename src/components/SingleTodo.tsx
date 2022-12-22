@@ -58,7 +58,7 @@ export const SingleTodo = ({ todo, todos, setTodos }: singleTodoProps) => {
           <s>{todo.title}</s>
         </p>
       ) : (
-        <p className='py-2 truncate  w-full  text-lg'>{todo.title}</p>
+        <p className='py-2 truncate  w-full  text-lg'>{todo.doc.title}</p>
       )}
 
       <div className='date-action-wrapper pt-4 flex justify-between items-center'>
@@ -78,6 +78,3 @@ export const SingleTodo = ({ todo, todos, setTodos }: singleTodoProps) => {
     </form>
   );
 };
-
-// onClick={(e: React.MouseEvent) => {
-//   const el = e.target as HTMLElement;

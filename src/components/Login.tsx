@@ -7,19 +7,20 @@ type LoginProps = {
   setUser: React.Dispatch<React.SetStateAction<GoogleLoginResponse | undefined>>;
 };
 const clientId = '80336867282-17up1c1gkmndrhjv8gn5uemk8g5p00bo.apps.googleusercontent.com';
-const cliendSecrete = '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';
+// const cliendSecrete = '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';
 
 export const Login = ({ setUser }: LoginProps) => {
   useEffect(() => {
-    const initClient = () => {
-      gapi.auth2.init({ clientId, scope: '' });
-      // gapi.client.init({ clientId, scope: '' });
-    };
-    gapi.load('client:auth2', initClient);
+    gapi.load('client:auth2', () => gapi.auth2.init({ clientId, scope: '' }));
+
+    // const initClient = () => {
+    //   gapi.auth2.init({ clientId, scope: '' });
+    // };
+    // gapi.load('client:auth2', initClient);
   }, []);
 
   const onSuccess = (data: any) => {
-    console.log('data', data);
+    // console.log('data', data);
     setUser(data);
   };
   const onFailure = (data: {}) => {

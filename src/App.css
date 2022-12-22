@@ -8,8 +8,10 @@ myColors {
 .App {
   width: 100%;
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
   padding: 5%;
+  background: #4e54c8;
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
 }
 
 .input__wrapper {
@@ -77,19 +79,6 @@ myColors {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.df {
-  display: flex;
-  align-items: center;
-}
-.header {
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.name-avatar {
-  color: white;
-  gap: 1rem;
 }
 
 .avatar {

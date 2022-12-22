@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/pouchdb": "^6.4.0",
+    "@types/uuid": "^9.0.0",
     "dayjs": "^1.11.6",
     "gapi-script": "^1.2.0",
+    "pouchdb": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",

@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Todo } from '../models/todo';
-import { errorToast } from './common/notificationHandler';
+import { errorToast, successToast } from './common/notificationHandler';
 import dayjs from 'dayjs';
+import { v4 } from 'uuid';
+import { db } from './common/DB';
 
 type inpuFieldProps = {
   todos: Todo[];
@@ -13,13 +15,22 @@ export const InputField = ({ todos, setTodos }: inpuFieldProps) => {
   const [date, setDate] = useState<string>('');
   const today = new Date();
 
-  const handleAdd = (e: FormEvent) => {
+  const handleAdd = async (e: FormEvent) => {
     e.preventDefault();
     if (!title) return errorToast('Activity is Requiered');
     if (!date) return errorToast('Date and Time to Completion is Requiered');
-    setTodos([...todos, { title, isDone: false, date: dayjs(date).format('DD MMM YYYY HH:mm'), id: Date.now() }]);
-    setTitle('');
+
+    try {
+      const newTodoToAdd = { title, isDone: false, date: dayjs(date).format('DD MMM YYYY HH:mm'), id: Date.now(), _id: v4() };
+      console.log('newTodoToAdd', newTodoToAdd);
+      await db.put(newTodoToAdd);
+      successToast('Task Added Successfully');
+    } catch (error) {
+      console.log('adderror', error);
+      errorToast('Something Went wrong');
+    }
   };
+
   return (
     <form className='input__wrapper flex-col md:flex-row' onSubmit={handleAdd}>
       <div>
